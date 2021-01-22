@@ -347,8 +347,37 @@ document.addEventListener('DOMContentLoaded', (event) => {
         showLikedPostElem: '.header__link_likes',
     })
 
-    console.log(twitter)
-
     /*****************************_other_********************************************/
+
+    /*****************************_class Preloader_********************************************/
+
+    class Preloader {
+        constructor() {
+            const start = () => {
+                const preloader = document.getElementById("hellopreloader_preload");
+                const fadeOut = (elem) => {
+                    elem.style.opacity = 1;
+                    const hidePreloader = setInterval(function () {
+                        elem.style.opacity = elem.style.opacity - 0.05;
+                        if (elem.style.opacity <= 0.05) {
+                            clearInterval(hidePreloader);
+                            preloader.style.display = "none";
+                        }
+                    }, 16);
+                }
+                window.onload = () => {
+                    setTimeout(() => {
+                        fadeOut(preloader);
+                    }, 700);
+                };
+            }
+            start()
+        }
+    }
+
+    const load = new Preloader()
+    load
+
+    /*****************************_class Preloader_********************************************/
 
 })
